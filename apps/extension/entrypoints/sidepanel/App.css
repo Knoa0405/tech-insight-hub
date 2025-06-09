@@ -1,0 +1,130 @@
+.sidepanel-container {
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.sidepanel-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+.sidepanel-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.current-page {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.current-page h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.url {
+  margin: 0;
+  font-size: 14px;
+  color: #2d3748;
+  word-break: break-all;
+  background: #f7fafc;
+  padding: 8px;
+  border-radius: 4px;
+  border-left: 3px solid #4299e1;
+}
+
+.action-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summarize-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.summary-section {
+  flex: 1;
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+}
+
+.summary-section h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.summary-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-content p {
+  margin: 0;
+  line-height: 1.6;
+  color: #4a5568;
+  font-size: 14px;
+}
+
+.placeholder {
+  color: #a0aec0 !important;
+  font-style: italic;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.summarize-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sidepanel-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidepanel-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.sidepanel-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.sidepanel-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
