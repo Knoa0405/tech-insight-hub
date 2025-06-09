@@ -2,12 +2,11 @@ export default defineBackground(() => {
   console.log("Background script loaded!", { id: browser.runtime.id });
 
   browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === "summarize-html" && message.html) {
+    if (message.type === "summarize-html" && message.body) {
       // async 함수를 즉시 실행하고 결과를 처리
       (async () => {
         try {
-          const summary = await fetchSummaryFromAPI(message.html);
-          console.log(summary, "summary");
+          const summary = await fetchSummaryFromAPI(message.body);
           sendResponse({ summary });
         } catch (error) {
           console.error("Error generating summary:", error);
@@ -20,14 +19,14 @@ export default defineBackground(() => {
   });
 });
 
-const fetchSummaryFromAPI = async (html: string) => {
+const fetchSummaryFromAPI = async (body: string) => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
   if (!apiKey) {
     throw new Error("OpenAI API 키가 설정되지 않았습니다.");
   }
 
-  const truncatedContent = html.substring(0, 3000); // 3000자로 제한
+  const truncatedContent = body.substring(0, 5000); // 5000자로 제한
 
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
@@ -36,16 +35,14 @@ const fetchSummaryFromAPI = async (html: string) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
-          content:
-            "다음 웹페이지 내용을 한국어로 간단하고 명확하게 요약해주세요. 핵심 내용만 3-5문장으로 요약하세요.",
+          content: "다음 웹페이지 내용을 한국어로 핵심 내용만 요약해주세요.",
         },
         { role: "user", content: truncatedContent },
       ],
-      max_tokens: 300,
     }),
   });
 

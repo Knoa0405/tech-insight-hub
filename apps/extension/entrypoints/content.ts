@@ -3,9 +3,9 @@ export default defineContentScript({
   main() {
     browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
       if (message.type === "summarize-html") {
-        const html = document.documentElement.outerHTML;
+        const body = document.body.innerHTML;
         browser.runtime.sendMessage(
-          { type: "summarize-html", html },
+          { type: "summarize-html", body },
           (response) => {
             sendResponse({ summary: response.summary });
           }
