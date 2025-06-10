@@ -1,6 +1,5 @@
 import "./App.css";
 import { Button } from "@workspace/ui/components/button";
-import AiTechLogo from "@/public/ai-tech.svg";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -73,7 +72,7 @@ function App() {
   return (
     <div className="sidepanel-container">
       <header className="sidepanel-header">
-        <img src={AiTechLogo} className="logo" alt="Tech Insight Logo" />
+        <img src="/ai-tech.svg" className="logo" alt="Tech Insight Logo" />
         <h1>Tech Insight</h1>
       </header>
 

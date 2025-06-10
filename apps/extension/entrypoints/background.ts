@@ -17,6 +17,14 @@ export default defineBackground(() => {
       return true; // 비동기 응답을 위해 true 반환 ( chrome 에게 비동기 응답을 알림 )
     }
   });
+
+  browser.tabs.onUpdated.addListener(async (tabId) => {
+    await browser.sidePanel.setOptions({
+      tabId,
+      path: "sidepanel.html",
+      enabled: true,
+    });
+  });
 });
 
 const fetchSummaryFromAPI = async (body: string) => {
